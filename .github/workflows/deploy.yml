@@ -33,11 +33,9 @@ jobs:
         run: npm ci
 
       - name: Configure Pages
-        # `enablement: true` turns on GitHub Pages automatically on the first run
-        # (no manual Settings toggle needed) when the token has permission.
+        # Requires Pages to be enabled once: Settings -> Pages ->
+        # Build and deployment -> Source: "GitHub Actions".
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Build static export
         run: npm run build

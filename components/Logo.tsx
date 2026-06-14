@@ -1,60 +1,69 @@
 /**
- * Custom Cayce Mini Mart logo mark: a rich red badge (echoing the store's red
- * awning) with a gold monogram "C" and a premium sparkle. Pure SVG, scalable,
- * and tiny. Used in the nav, footer, and favicon.
+ * Cayce Mini Mart logo mark: a striped storefront awning over a red coffee mug
+ * with a gold fuel-drop rising from it (fuel + cafe in one). Vector recreation
+ * of the store's logo, so it stays crisp and tiny at any size. Used in the nav,
+ * footer, and favicon.
  */
 export function Logo({ className = "h-9 w-9" }: { className?: string }) {
   return (
     <svg
-      viewBox="0 0 48 48"
+      viewBox="0 0 64 64"
       className={className}
       role="img"
       aria-label="Cayce Mini Mart logo"
     >
       <defs>
-        <linearGradient id="cmm-badge" x1="0" y1="0" x2="1" y2="1">
+        <linearGradient id="lg-cup" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#d6262f" />
-          <stop offset="1" stopColor="#8c1419" />
+          <stop offset="1" stopColor="#991519" />
         </linearGradient>
-        <linearGradient id="cmm-gold" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#f7e0ad" />
-          <stop offset="0.5" stopColor="#e6b566" />
-          <stop offset="1" stopColor="#c9982f" />
+        <linearGradient id="lg-drop" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#ffe28c" />
+          <stop offset="0.55" stopColor="#f4ad3e" />
+          <stop offset="1" stopColor="#e67a1e" />
         </linearGradient>
-        <radialGradient id="cmm-shine" cx="0.3" cy="0.22" r="0.85">
-          <stop offset="0" stopColor="#ffffff" stopOpacity="0.4" />
-          <stop offset="1" stopColor="#ffffff" stopOpacity="0" />
+        <radialGradient id="lg-glow" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0" stopColor="#f4ad3e" stopOpacity="0.55" />
+          <stop offset="1" stopColor="#f4ad3e" stopOpacity="0" />
         </radialGradient>
+        <clipPath id="lg-awn">
+          <path d="M8 16 Q32 8 56 16 L56 20 q-4 5 -8 0 q-4 5 -8 0 q-4 5 -8 0 q-4 5 -8 0 q-4 5 -8 0 q-4 5 -8 0 L8 16 Z" />
+        </clipPath>
       </defs>
 
-      <rect x="2" y="2" width="44" height="44" rx="13" fill="url(#cmm-badge)" />
-      <rect x="2" y="2" width="44" height="44" rx="13" fill="url(#cmm-shine)" />
-      <rect
-        x="2.75"
-        y="2.75"
-        width="42.5"
-        height="42.5"
-        rx="12.2"
-        fill="none"
-        stroke="#ffffff"
-        strokeOpacity="0.18"
-        strokeWidth="0.9"
-      />
+      {/* Awning: red base, gold stripes, solid red top band */}
+      <g clipPath="url(#lg-awn)">
+        <rect x="6" y="7" width="52" height="22" fill="#c01f29" />
+        <rect x="18.25" y="7" width="5.5" height="22" fill="#f2c14e" />
+        <rect x="29.25" y="7" width="5.5" height="22" fill="#f2c14e" />
+        <rect x="40.25" y="7" width="5.5" height="22" fill="#f2c14e" />
+        <rect x="6" y="7" width="52" height="5.5" fill="#c01f29" />
+      </g>
 
-      {/* Monogram C */}
+      {/* Mug handle */}
       <path
-        d="M31.4 30.7 A10 10 0 1 1 31.4 17.3"
+        d="M43 33 C51 33 51 45.5 43 45.5"
         fill="none"
-        stroke="url(#cmm-gold)"
-        strokeWidth="5"
+        stroke="#b81d24"
+        strokeWidth="3.8"
         strokeLinecap="round"
       />
 
-      {/* Sparkle */}
+      {/* Mug body */}
       <path
-        d="M34.5 9.1 L35.6 11.4 L37.9 12.5 L35.6 13.6 L34.5 15.9 L33.4 13.6 L31.1 12.5 L33.4 11.4 Z"
-        fill="url(#cmm-gold)"
+        d="M22 29 L42 29 Q43.4 29 43.1 30.8 L41.2 48 Q40.6 52 36.3 52 L27.7 52 Q23.4 52 22.8 48 L20.9 30.8 Q20.6 29 22 29 Z"
+        fill="url(#lg-cup)"
       />
+      {/* Mug rim */}
+      <ellipse cx="32" cy="29.4" rx="10.7" ry="2.5" fill="#8f151b" />
+
+      {/* Gold fuel-drop with soft glow */}
+      <ellipse cx="32" cy="38" rx="9" ry="11" fill="url(#lg-glow)" />
+      <path
+        d="M32 27 C37 33.5 38.7 38 35.2 41.8 C33.4 43.8 30.6 43.8 28.8 41.8 C25.3 38 27 33.5 32 27 Z"
+        fill="url(#lg-drop)"
+      />
+      <ellipse cx="29.9" cy="36" rx="1.4" ry="2.4" fill="#ffffff" fillOpacity="0.45" />
     </svg>
   );
 }

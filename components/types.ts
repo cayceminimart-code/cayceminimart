@@ -50,11 +50,8 @@ export type Deal = {
 export type HourRow = {
   day: string;
   hours: string;
-};
-
-export type OpenHours = {
-  /** 24h opening hour, e.g. 7 = 7 AM. */
-  openHour: number;
-  /** 24h closing hour, e.g. 21 = 9 PM. */
-  closeHour: number;
+  /** 24h decimal open time, used for the live "Open now" badge (6.5 = 6:30 AM). */
+  open: number;
+  /** 24h decimal close time (22 = 10 PM, 23 = 11 PM). */
+  close: number;
 };

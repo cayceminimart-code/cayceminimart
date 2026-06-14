@@ -1,7 +1,7 @@
 # Cayce Mini Mart — Website
 
 A fast, premium single-page marketing site for **Cayce Mini Mart**
-(2335 Charleston Hwy, Cayce, SC 29033 · (803) 719-2451).
+(2335 Charleston Hwy, Cayce, SC 29033 · (803) 661-9855).
 
 Built with **Next.js (App Router) + TypeScript + Tailwind CSS** and animated with
 **Framer Motion**. Dark, high-end aesthetic with a rich red accent and warm gold

@@ -4,16 +4,14 @@ import { Check, Copy, MapPin, Navigation, Phone } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
-import type { HourRow, OpenHours, Store } from "./types";
+import type { HourRow, Store } from "./types";
 
 export function HoursLocation({
   store,
   hours,
-  openHours,
 }: {
   store: Store;
   hours: HourRow[];
-  openHours: OpenHours;
 }) {
   const [copied, setCopied] = useState(false);
   // -1 until mounted, so server and first client render match (no hydration gap).
@@ -23,10 +21,12 @@ export function HoursLocation({
   useEffect(() => {
     const now = new Date();
     // hours[] is ordered Mon..Sun; JS getDay() is 0=Sun..6=Sat.
-    setTodayIdx((now.getDay() + 6) % 7);
+    const idx = (now.getDay() + 6) % 7;
+    setTodayIdx(idx);
     const h = now.getHours() + now.getMinutes() / 60;
-    setOpenNow(h >= openHours.openHour && h < openHours.closeHour);
-  }, [openHours.openHour, openHours.closeHour]);
+    const row = hours[idx];
+    setOpenNow(row ? h >= row.open && h < row.close : null);
+  }, [hours]);
 
   async function copyAddress() {
     try {

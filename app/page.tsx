@@ -29,7 +29,6 @@ import type {
   GasPrices,
   HourRow,
   Offer,
-  OpenHours,
   Stat,
   Store,
 } from "@/components/types";
@@ -45,8 +44,8 @@ const STORE: Store = {
   name: "Cayce Mini Mart",
   tagline:
     "Premium fuel, fresh snacks & everyday essentials in Cayce, SC",
-  phoneDisplay: "(803) 719-2451",
-  phoneHref: "tel:+18037192451", // keep the +1 and digits only here
+  phoneDisplay: "(803) 661-9855",
+  phoneHref: "tel:+18036619855", // keep the +1 and digits only here
   addressLine1: "2335 Charleston Hwy",
   addressLine2: "Cayce, SC 29033",
   addressFull: "2335 Charleston Hwy, Cayce, SC 29033",
@@ -55,9 +54,9 @@ const STORE: Store = {
   // Google Maps embed for the map box. Replace with your own embed link if you like.
   mapsEmbedUrl:
     "https://www.google.com/maps?q=2335+Charleston+Hwy,+Cayce,+SC+29033&output=embed",
-  // PLACEHOLDER links. Replace with your real profiles when ready.
-  instagramUrl: "https://instagram.com/cayceminimart",
+  instagramUrl: "https://www.instagram.com/cayceminimart/",
   instagramHandle: "@cayceminimart",
+  // PLACEHOLDER: replace with your real Google Business profile when ready.
   googleBusinessUrl:
     "https://www.google.com/maps/search/?api=1&query=Cayce+Mini+Mart+Cayce+SC",
 };
@@ -149,20 +148,19 @@ const DEALS: Deal[] = [
   // { badge: "Combo", title: "2 Energy Drinks", desc: "Mix & match top brands.", price: "$3.50" },
 ];
 
-/* ── 8. Store hours ───────────────────────────────────────────────────── */
+/* ── 8. Store hours ───────────────────────────────────────────────────────
+   `hours` is the text shown in the table. `open`/`close` are the same times on
+   a 24-hour clock (6.5 = 6:30 AM, 22 = 10 PM, 23 = 11 PM) and power the live
+   "Open now" badge. Keep the two in sync. */
 const HOURS: HourRow[] = [
-  { day: "Monday", hours: "7:00 AM to 9:00 PM" },
-  { day: "Tuesday", hours: "7:00 AM to 9:00 PM" },
-  { day: "Wednesday", hours: "7:00 AM to 9:00 PM" },
-  { day: "Thursday", hours: "7:00 AM to 9:00 PM" },
-  { day: "Friday", hours: "7:00 AM to 9:00 PM" },
-  { day: "Saturday", hours: "7:00 AM to 9:00 PM" },
-  { day: "Sunday", hours: "7:00 AM to 9:00 PM" },
+  { day: "Monday", hours: "6:30 AM to 10:00 PM", open: 6.5, close: 22 },
+  { day: "Tuesday", hours: "6:30 AM to 10:00 PM", open: 6.5, close: 22 },
+  { day: "Wednesday", hours: "6:30 AM to 10:00 PM", open: 6.5, close: 22 },
+  { day: "Thursday", hours: "6:30 AM to 10:00 PM", open: 6.5, close: 22 },
+  { day: "Friday", hours: "6:30 AM to 11:00 PM", open: 6.5, close: 23 },
+  { day: "Saturday", hours: "7:00 AM to 11:00 PM", open: 7, close: 23 },
+  { day: "Sunday", hours: "7:00 AM to 10:00 PM", open: 7, close: 22 },
 ];
-
-//   Numeric version of the hours above, used for the live "Open now" badge.
-//   24-hour clock: 7 = 7 AM, 21 = 9 PM. Keep these in sync with HOURS.
-const OPEN_HOURS: OpenHours = { openHour: 7, closeHour: 21 };
 
 /* ════════════════════════════════════════════════════════════════════════
    END OF EDITABLE CONTENT. You can stop here.
@@ -180,7 +178,7 @@ export default function Page() {
         <Offers offers={OFFERS} />
         <Experience images={EXPERIENCE_IMAGES} />
         <Deals deals={DEALS} store={STORE} />
-        <HoursLocation store={STORE} hours={HOURS} openHours={OPEN_HOURS} />
+        <HoursLocation store={STORE} hours={HOURS} />
       </main>
       <Footer store={STORE} />
       <MobileActionBar store={STORE} />

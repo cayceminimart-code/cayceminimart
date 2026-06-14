@@ -131,7 +131,7 @@ export function Hero({
               <div className="grid grid-cols-2 gap-3">
                 <div className="rounded-xl bg-white/[0.04] p-3">
                   <p className="text-[11px] uppercase tracking-wide text-white/50">
-                    Regular · Cash
+                    Regular · Card
                   </p>
                   <p className="font-display text-2xl font-bold text-white">
                     {prices.regularCash}
@@ -139,7 +139,7 @@ export function Hero({
                 </div>
                 <div className="rounded-xl bg-white/[0.04] p-3">
                   <p className="text-[11px] uppercase tracking-wide text-white/50">
-                    Diesel · Cash
+                    Regular · Cash
                   </p>
                   <p className="font-display text-2xl font-bold text-white">
                     {prices.dieselCash}

@@ -63,9 +63,9 @@ const STORE: Store = {
 
 /* ── 2. Gas prices (shown in the hero card) ───────────────────────────── */
 const GAS_PRICES: GasPrices = {
-  regularCash: "$3.64",
-  dieselCash: "$4.79",
-  note: "Cash prices shown. Card prices may differ. Updated regularly in-store.",
+  regularCash: "$3.59",
+  dieselCash: "$3.69",
+  note: "Updated regularly in-store.",
   updatedLabel: "Updated weekly",
 };
 

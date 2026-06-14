@@ -1,0 +1,278 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------ */
+/*  Base                                                               */
+/* ------------------------------------------------------------------ */
+:root {
+  --coal: #0a0a0c;
+  --cherry: #b81d24;
+  --gold: #e6b566;
+  --nav-h: 64px;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-h);
+}
+
+html,
+body {
+  /* Never allow horizontal scroll, on any viewport down to 320px. */
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--coal);
+  color: #ededee;
+  font-family: theme("fontFamily.sans");
+  font-size: 16px; /* readable on mobile without zoom */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(184, 29, 36, 0.85);
+  color: #fff;
+}
+
+/* Thin custom scrollbar (desktop) */
+@media (pointer: fine) {
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0a0c;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #26262c;
+    border-radius: 999px;
+    border: 2px solid #0a0a0c;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Reusable utilities                                                 */
+/* ------------------------------------------------------------------ */
+@layer components {
+  .container-px {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8;
+  }
+
+  /* Glassmorphism card */
+  .glass {
+    background: linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0.02) 60%,
+      rgba(255, 255, 255, 0.01) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .glass-strong {
+    background: linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 0.09) 0%,
+      rgba(255, 255, 255, 0.03) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  /* Eyebrow / label */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-gold-300/80;
+  }
+
+  /* Gradient gold text */
+  .text-gold-gradient {
+    background: linear-gradient(120deg, #f5d79a 0%, #e6b566 45%, #c98b34 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@layer utilities {
+  /* Subtle film grain overlay (inline SVG, no network request) */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Shimmer headline reveal                                            */
+/* ------------------------------------------------------------------ */
+.shimmer-text {
+  background: linear-gradient(
+    100deg,
+    #ffffff 0%,
+    #ffffff 38%,
+    #f5d79a 50%,
+    #ffffff 62%,
+    #ffffff 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 5.5s linear infinite;
+}
+
+/* Moving light sheen used on the primary button */
+.sheen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+  transform: translateX(-130%) skewX(-12deg);
+  pointer-events: none;
+}
+.sheen:hover::before {
+  animation: sheen 0.9s ease;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Aurora background                                                  */
+/* ------------------------------------------------------------------ */
+.aurora-wrap {
+  position: absolute;
+  inset: -10% -10% -10% -10%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+}
+
+.aurora-1 {
+  top: -12%;
+  left: -6%;
+  width: 46vw;
+  height: 46vw;
+  max-width: 620px;
+  max-height: 620px;
+  background: radial-gradient(circle at 30% 30%, #b81d24, transparent 62%);
+}
+.aurora-2 {
+  top: 8%;
+  right: -10%;
+  width: 42vw;
+  height: 42vw;
+  max-width: 560px;
+  max-height: 560px;
+  background: radial-gradient(circle at 60% 40%, #7a1418, transparent 60%);
+}
+.aurora-3 {
+  bottom: -18%;
+  left: 28%;
+  width: 40vw;
+  height: 40vw;
+  max-width: 520px;
+  max-height: 520px;
+  background: radial-gradient(circle at 50% 50%, #6b4a1a, transparent 60%);
+  opacity: 0.42;
+}
+
+.aurora-blob.is-animated.aurora-1 {
+  animation: auroraA 16s ease-in-out infinite alternate;
+}
+.aurora-blob.is-animated.aurora-2 {
+  animation: auroraB 19s ease-in-out infinite alternate;
+}
+.aurora-blob.is-animated.aurora-3 {
+  animation: auroraC 22s ease-in-out infinite alternate;
+}
+
+@keyframes auroraA {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(8%, 6%, 0) scale(1.12);
+  }
+}
+@keyframes auroraB {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1.05);
+  }
+  100% {
+    transform: translate3d(-7%, 9%, 0) scale(0.95);
+  }
+}
+@keyframes auroraC {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(6%, -8%, 0) scale(1.1);
+  }
+}
+
+/* Lighter aurora on phones: smaller blur radius = far cheaper to paint */
+@media (max-width: 768px) {
+  .aurora-blob {
+    filter: blur(55px);
+    opacity: 0.42;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Accessibility: respect reduced motion                             */
+/* ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .aurora-blob {
+    animation: none !important;
+  }
+}

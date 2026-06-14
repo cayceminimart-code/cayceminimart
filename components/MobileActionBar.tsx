@@ -6,7 +6,7 @@ import { useState } from "react";
 import type { Store } from "./types";
 
 /**
- * Persistent bottom action bar — mobile only (hidden on desktop). Fades in
+ * Persistent bottom action bar, mobile only (hidden on desktop). Fades in
  * once the hero has scrolled mostly out of view so it never overlaps the
  * hero's own CTAs, keeping Directions + Call always one tap away.
  */

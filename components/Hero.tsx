@@ -12,6 +12,16 @@ import { AuroraBackground } from "./AuroraBackground";
 import { usePerformanceMode } from "./usePerformanceMode";
 import type { GasPrices, Store } from "./types";
 
+// Decorative twinkling sparkles scattered across the hero.
+const SPARKLES = [
+  { left: "13%", top: "30%", size: 6, delay: "0s" },
+  { left: "82%", top: "22%", size: 10, delay: "0.8s" },
+  { left: "67%", top: "60%", size: 7, delay: "1.6s" },
+  { left: "91%", top: "46%", size: 5, delay: "2.2s" },
+  { left: "30%", top: "80%", size: 6, delay: "1.2s" },
+  { left: "55%", top: "15%", size: 5, delay: "0.4s" },
+];
+
 export function Hero({
   store,
   prices,
@@ -47,7 +57,26 @@ export function Hero({
         <AuroraBackground />
       </motion.div>
 
-      {/* Content column — vertically centered, CTAs anchored toward the bottom */}
+      {/* Twinkling sparkles (skipped on reduced-motion / low-power devices) */}
+      {parallaxOn && (
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1]">
+          {SPARKLES.map((s, i) => (
+            <span
+              key={i}
+              className="sparkle"
+              style={{
+                left: s.left,
+                top: s.top,
+                width: s.size,
+                height: s.size,
+                animationDelay: s.delay,
+              }}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* Content column: vertically centered, CTAs anchored toward the bottom */}
       <motion.div
         className="container-px relative z-10 flex flex-1 flex-col pb-6 pt-20 sm:pb-12 sm:pt-28"
         style={parallaxOn ? { y: contentY, opacity: fade } : undefined}
@@ -124,7 +153,7 @@ export function Hero({
           </motion.div>
         </div>
 
-        {/* Primary CTAs — full width & thumb-reachable on mobile */}
+        {/* Primary CTAs: full width and thumb-reachable on mobile */}
         <motion.div
           className="mt-6 flex w-full flex-col gap-3 sm:mt-8 sm:max-w-md sm:flex-row"
           initial={{ opacity: 0, y: 16 }}
@@ -135,7 +164,7 @@ export function Hero({
             href={store.directionsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="sheen relative flex min-h-[52px] flex-1 items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-cherry-500 to-cherry-600 px-6 text-base font-semibold text-white shadow-glow transition-transform active:scale-[0.98] sm:hover:scale-[1.02]"
+            className="sheen cta-pulse relative flex min-h-[52px] flex-1 items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-cherry-500 to-cherry-600 px-6 text-base font-semibold text-white transition-transform active:scale-[0.98] sm:hover:scale-[1.02]"
           >
             <Navigation className="h-5 w-5" aria-hidden="true" />
             Get Directions

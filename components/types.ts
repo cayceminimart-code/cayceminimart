@@ -30,6 +30,8 @@ export type Stat = {
   /** Used instead of a number, e.g. "On-Site". */
   staticText?: string;
   label: string;
+  /** Small lucide icon shown above the stat. */
+  icon?: LucideIcon;
 };
 
 export type Offer = {

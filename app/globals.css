@@ -258,6 +258,133 @@ body {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Liveliness: sparkles, marquee, animated gold, hover delight        */
+/* ------------------------------------------------------------------ */
+
+/* Animated shifting gold gradient text (for headline highlights) */
+.text-gold-gradient-animated {
+  background: linear-gradient(100deg, #f5d79a, #e6b566, #caa24a, #f5d79a);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: goldShift 7s ease-in-out infinite;
+}
+@keyframes goldShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Twinkling sparkles (hero) */
+.sparkle {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    #f7e6b8 0%,
+    rgba(230, 181, 102, 0.5) 45%,
+    rgba(230, 181, 102, 0) 70%
+  );
+  pointer-events: none;
+  will-change: transform, opacity;
+  animation: twinkle 4.5s ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.12; transform: translate3d(0, 0, 0) scale(0.6); }
+  50% { opacity: 0.9; transform: translate3d(0, -6px, 0) scale(1); }
+}
+
+/* Scrolling marquee ticker */
+.marquee {
+  overflow: hidden;
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee 32s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+/* Nav link hover underline */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #e6b566, #cf2630);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Breathing glow on the primary call-to-action */
+.cta-pulse {
+  animation: ctaPulse 3.2s ease-in-out infinite;
+}
+@keyframes ctaPulse {
+  0%, 100% {
+    box-shadow: 0 12px 34px -12px rgba(184, 29, 36, 0.55),
+      0 0 0 1px rgba(230, 181, 102, 0.1);
+  }
+  50% {
+    box-shadow: 0 16px 50px -10px rgba(184, 29, 36, 0.85),
+      0 0 0 1px rgba(230, 181, 102, 0.22);
+  }
+}
+
+/* Premium gradient border that fades in on hover */
+.hover-ring {
+  position: relative;
+}
+.hover-ring::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(230, 181, 102, 0.7),
+    rgba(184, 29, 36, 0.55)
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.hover-ring:hover::before {
+  opacity: 1;
+}
+
+/* Gentle bob for the "coming soon" icon */
+.bob {
+  animation: bob 3.6s ease-in-out infinite;
+}
+@keyframes bob {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-5deg); }
+  50% { transform: translate3d(0, -8px, 0) rotate(5deg); }
+}
+
+/* ------------------------------------------------------------------ */
 /*  Accessibility: respect reduced motion                             */
 /* ------------------------------------------------------------------ */
 @media (prefers-reduced-motion: reduce) {

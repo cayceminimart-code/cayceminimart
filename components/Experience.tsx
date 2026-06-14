@@ -41,10 +41,10 @@ export function Experience({ images }: { images: string[] }) {
                 <>
                   A gas stop that
                   <br className="hidden sm:block" /> feels{" "}
-                  <span className="text-gold-gradient">premium.</span>
+                  <span className="text-gold-gradient-animated">premium.</span>
                 </>
               }
-              description="We sweat the details most stores skip — the lighting, the layout, the little extras — so a quick fill-up or snack run feels effortless and genuinely good."
+              description="We sweat the details most stores skip, from the lighting to the layout to the little extras, so a quick fill-up or snack run feels effortless and genuinely good."
             />
 
             <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">

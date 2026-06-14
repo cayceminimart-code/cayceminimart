@@ -2,6 +2,7 @@
 
 import { ExternalLink, Instagram, MapPin, Phone } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Logo } from "./Logo";
 import type { Store } from "./types";
 
 export function Footer({ store }: { store: Store }) {
@@ -19,9 +20,7 @@ export function Footer({ store }: { store: Store }) {
         <div className="grid gap-10 md:grid-cols-2">
           <div>
             <div className="flex items-center gap-2.5">
-              <span className="grid h-9 w-9 place-items-center rounded-lg bg-gradient-to-br from-cherry-400 to-cherry-600 font-display text-base font-bold text-white">
-                C
-              </span>
+              <Logo className="h-10 w-10" />
               <span className="font-display text-lg font-semibold text-white">
                 Cayce <span className="text-gold">Mini Mart</span>
               </span>

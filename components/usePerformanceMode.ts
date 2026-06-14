@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 type PerfState = {
   /** Heaviest effects (animated aurora, parallax) should be disabled. */
   lowPower: boolean;
-  /** Coarse pointer / small screen — run lighter motion. */
+  /** Coarse pointer / small screen, run lighter motion. */
   mobile: boolean;
   /** Hydration-safe flag: true only after the first client effect runs. */
   ready: boolean;

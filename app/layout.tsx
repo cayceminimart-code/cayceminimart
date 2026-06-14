@@ -7,7 +7,7 @@ const SITE_URL = "https://cayceminimart.vercel.app"; // update to your real doma
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Cayce Mini Mart — Premium Convenience Store & Gas in Cayce, SC",
+  title: "Cayce Mini Mart | Premium Convenience Store & Gas in Cayce, SC",
   description:
     "Premium fuel, fresh snacks, hot coffee, lottery, ATM and everyday essentials at 2335 Charleston Hwy, Cayce, SC. Open 7 days a week. Call (803) 719-2451.",
   keywords: [
@@ -26,13 +26,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: SITE_URL,
     siteName: "Cayce Mini Mart",
-    title: "Cayce Mini Mart — Premium Convenience Store & Gas in Cayce, SC",
+    title: "Cayce Mini Mart | Premium Convenience Store & Gas in Cayce, SC",
     description:
       "Premium fuel, fresh snacks & everyday essentials in Cayce, SC. Open 7 days a week at 2335 Charleston Hwy.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cayce Mini Mart — Premium Convenience Store & Gas in Cayce, SC",
+    title: "Cayce Mini Mart | Premium Convenience Store & Gas in Cayce, SC",
     description:
       "Premium fuel, fresh snacks & everyday essentials in Cayce, SC. Open 7 days a week.",
   },

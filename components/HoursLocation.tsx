@@ -34,7 +34,7 @@ export function HoursLocation({
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
     } catch {
-      /* clipboard unavailable — silently ignore */
+      /* clipboard unavailable, silently ignore */
     }
   }
 
@@ -45,10 +45,11 @@ export function HoursLocation({
           eyebrow="Hours & Location"
           title={
             <>
-              Come see us in <span className="text-gold-gradient">Cayce</span>
+              Come see us in{" "}
+              <span className="text-gold-gradient-animated">Cayce</span>
             </>
           }
-          description="Right on Charleston Highway — easy to reach, easy to park, always close by."
+          description="Right on Charleston Highway. Easy to reach, easy to park, and always close by."
         />
 
         <div className="mt-12 grid gap-6 lg:grid-cols-5">
@@ -98,7 +99,7 @@ export function HoursLocation({
                 href={store.directionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cherry-500 to-cherry-600 text-base font-semibold text-white shadow-glow transition-transform active:scale-[0.98] sm:hover:scale-[1.02]"
+                className="cta-pulse inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cherry-500 to-cherry-600 text-base font-semibold text-white transition-transform active:scale-[0.98] sm:hover:scale-[1.02]"
               >
                 <Navigation className="h-5 w-5" aria-hidden="true" /> Get Directions
               </a>

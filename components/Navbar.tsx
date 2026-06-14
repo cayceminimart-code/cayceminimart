@@ -3,6 +3,7 @@
 import { useScroll, useMotionValueEvent } from "framer-motion";
 import { Navigation, Phone } from "lucide-react";
 import { useState } from "react";
+import { Logo } from "./Logo";
 import type { Store } from "./types";
 
 const LINKS = [
@@ -40,9 +41,7 @@ export function Navbar({ store }: { store: Store }) {
           className="group flex items-center gap-2.5"
           aria-label={`${store.name} home`}
         >
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-cherry-400 to-cherry-600 font-display text-sm font-bold text-white shadow-glow">
-            C
-          </span>
+          <Logo className="h-9 w-9 transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-3" />
           <span className="font-display text-[15px] font-semibold tracking-tight text-white">
             Cayce <span className="text-gold">Mini Mart</span>
           </span>
@@ -53,7 +52,7 @@ export function Navbar({ store }: { store: Store }) {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-medium text-white/70 transition-colors hover:text-white"
+              className="nav-link text-sm font-medium text-white/70 transition-colors hover:text-white"
             >
               {l.label}
             </a>
